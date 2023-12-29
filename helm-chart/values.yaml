@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  fullname: nginx:1.7
+  fullname: nginx:1.8
   pullPolicy: IfNotPresent
 
 nameOverride: ""
