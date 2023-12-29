@@ -15,4 +15,4 @@ spec:
       valuesFiles:
         - ./helm-chart/values.yaml
   values:
-    replicaCount: 1
+    replicaCount: 2
