@@ -18,19 +18,17 @@ spec:
       labels:
         {{- include "spring-boot.selectorLabels" . | nindent 8 }}
     spec:
-      imagePullSecrets:
-        - name: image-secret
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: nginx
+        - name: spring-boot
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.fullname }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: 8080
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
