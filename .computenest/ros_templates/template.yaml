@@ -276,9 +276,9 @@ Parameters:
               - ${CsOption}
               - ExistCs
     Default: 172.16.0.0/16
-  ReplicaCount:
+  ${ReplicaCount}:
     Type: Number
-    Label: 副本数
+    Label: pod数
     Default: 1
 Conditions:
   CreateAckCondition:
@@ -417,7 +417,7 @@ Resources:
                   - ClusterId
       HelmChartUrl: '{{ computenest::helmchart::yehanyh_spring-boot-chart }}'
       ChartValues:
-        Fn::Sub: '{'replicaCount': '${ReplicaCount}', 'service': {'port': 8080, 'type': 'LoadBalancer'}}'
+        Fn::Sub: '{"replicaCount": "${ReplicaCount}", "service": {"port": 8080, "type": "LoadBalancer"}}'
       DockerConfigJson: '{{ computenest::helm::dockerconfigjson }}'
       Namespace:
         Ref: 'ALIYUN::StackName'
