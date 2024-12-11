@@ -278,7 +278,7 @@ Parameters:
     Default: 172.16.0.0/16
   ReplicaCount:
     Type: Number
-    Label: pod数
+    Label: 副本数
     Default: 1
 Conditions:
   CreateAckCondition:

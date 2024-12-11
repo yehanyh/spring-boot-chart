@@ -22,7 +22,6 @@ Service:
           - cn-hangzhou
           - cn-shanghai
           - cn-beijing
-          - cn-wulanchabu
   ServiceType: private
   ServiceInfo:
     Locale: zh-CN
