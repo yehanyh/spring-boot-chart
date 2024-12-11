@@ -276,9 +276,9 @@ Parameters:
               - ${CsOption}
               - ExistCs
     Default: 172.16.0.0/16
-  ${ReplicaCount}:
+  ReplicaCount:
     Type: Number
-    Label: pod数
+    Label: pod数目
     Default: 1
 Conditions:
   CreateAckCondition:
