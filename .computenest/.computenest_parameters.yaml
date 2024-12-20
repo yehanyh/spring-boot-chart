@@ -1,0 +1,27 @@
+ChartValues:
+  replicaCount: ${ReplicaCount}
+  service:
+    port: 8080
+    type: LoadBalancer
+RoleName: ComputeNestDeploy
+HelmChartPath: Chart
+ClusterId: c8a3b437d0fc54faaabdb7f96e7ebe721
+OutputCmd: |-
+  export SERVICE_IP=$(kubectl get svc --namespace ${Namespace} ${ReleaseName} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+  echo "Visit URL: http://$SERVICE_IP/"
+ServiceType: managed
+ArtifactSourceType: HelmChart
+ServiceBuildRegion: cn-hangzhou
+RepoName: yehanyh/spring-boot-chart
+RegionId: cn-hangzhou
+CustomParameters:
+- NoEcho: false
+  Type: Number
+  AllowedPattern: ''
+  Label: Pod数
+  ConstraintDescription: ''
+  Default: '1'
+  Name: ReplicaCount
+Owner: yehanyh
+Branch: main
+Platform: github
