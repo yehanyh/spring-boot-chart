@@ -1,0 +1,19 @@
+ChartValues:
+  replicaCount: 1
+  service:
+    port: 8080
+    type: LoadBalancer
+HelmChartPath: Chart
+RuntimeType: Kubernetes
+OutputCmd: |-
+  export SERVICE_IP=$(kubectl get svc --namespace ${Namespace} ${ReleaseName} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+  echo "Visit URL: http://$SERVICE_IP:8080/"
+ServiceType: private
+ArtifactSourceType: HelmChart
+ServiceBuildRegion: ap-southeast-1
+RepoName: yehanyh/spring-boot-chart
+RegionId: cn-hangzhou
+OutputType: OutputCommend
+Owner: yehanyh
+Branch: main
+Platform: github
