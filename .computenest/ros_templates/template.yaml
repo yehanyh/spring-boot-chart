@@ -1,7 +1,7 @@
 ROSTemplateFormatVersion: '2015-09-01'
 Description:
-  en: 新建ack部署
-  zh-cn: new ack
+  en: 使用Helm Chart进行应用部署,同时支持Ack、Acs集群
+  zh-cn: Use Helm Chart for application deployment, and support Ack and Acs clusters
 Parameters:
   CsOptions:
     Type: String
@@ -304,12 +304,12 @@ Parameters:
             - NewAck
   WorkerSystemDiskCategory:
     Type: String
-    AllowedValues:
-      - cloud_efficiency
-      - cloud_ssd
-      - cloud_essd
+    Default: null
+    Required: true
+    AssociationProperty: ALIYUN::ECS::Disk::SystemDiskCategory
     AssociationPropertyMetadata:
-      LocaleKey: DiskCategory
+      RegionId: ${RegionId}
+      ZoneId: ${ZoneId}
       InstanceType: ${WorkerInstanceType}
       Visible:
         Condition:
@@ -319,7 +319,6 @@ Parameters:
     Label:
       en: Worker System Disk Category
       zh-cn: Worker 系统盘磁盘类型
-    Default: cloud_essd
   WorkerSystemDiskSize:
     Type: Number
     Label:
@@ -395,12 +394,10 @@ Parameters:
               - ${CsOptions}
               - ExistCs
     Default: 172.16.0.0/16
-  ChartValues:
-    Type: Json
-    Label:
-      en: Chart values
-      zh-cn: Chart values
-    Default: '{"replicaCount": "${ReplicaCount}", "service": {"port": 8080, "type": "LoadBalancer"}}'
+  ReplicaCount:
+    Type: Number
+    Label: 副本数
+    Default: 1
 Conditions:
   CreateClusterCondition:
     Fn::Or:
@@ -494,7 +491,7 @@ Resources:
           - ClusterId
       HelmChartUrl: '{{ computenest::helmchart::spring-boot-chart }}'
       ChartValues:
-        Ref: ChartValues
+        Fn::Sub: '{"replicaCount": "${ReplicaCount}", "service": {"port": 8080, "type": "LoadBalancer"}}'
       Namespace:
         Ref: 'ALIYUN::StackName'
       ReleaseName: spring-boot-chart
