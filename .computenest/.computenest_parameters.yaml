@@ -1,0 +1,24 @@
+ChartValues:
+  replicaCount: ${ReplicaCount}
+  service:
+    port: 8080
+    type: LoadBalancer
+HelmChartPath: Chart
+RuntimeType: Kubernetes
+ServiceType: private
+ArtifactSourceType: HelmChart
+ServiceBuildRegion: ap-southeast-1
+RepoName: yehanyh/spring-boot-chart
+RegionId: cn-hangzhou
+CustomParameters:
+- NoEcho: false
+  Type: Number
+  AllowedPattern: ''
+  Label: Pod数
+  ConstraintDescription: ''
+  Default: '1'
+  Name: ReplicaCount
+OutputType: SetAfterCreated
+Owner: yehanyh
+Branch: main
+Platform: github

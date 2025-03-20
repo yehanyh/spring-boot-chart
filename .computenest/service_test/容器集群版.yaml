@@ -1,0 +1,18 @@
+caseId: stc-293d6def8bce439aa9b1
+parameters:
+  AckNetworkPlugin: flannel
+  ClusterId: Please fill in
+  CsOptions: ExistCs
+  LoginPassword: $[iact3-auto]
+  PayType: PostPaid
+  PodCidr: 10.0.0.0/16
+  ReplicaCount: 1
+  ServiceCidr: 172.16.0.0/16
+  VSwitchCidrBlock: 192.168.0.0/24
+  VpcCidrBlock: 192.168.0.0/16
+  VpcOption: NewVPC
+  WorkerInstanceCount: 3
+  WorkerInstanceType: Please fill in
+  WorkerSystemDiskCategory: Please fill in
+  WorkerSystemDiskSize: 120
+templateName: 容器集群版
