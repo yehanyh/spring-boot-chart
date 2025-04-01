@@ -1,5 +1,5 @@
 ChartValues:
-  replicaCount: ${ReplicaCount}
+  replicaCount: 1
   service:
     port: 8080
     type: LoadBalancer
@@ -10,15 +10,7 @@ ArtifactSourceType: HelmChart
 ServiceBuildRegion: ap-southeast-1
 RepoName: yehanyh/spring-boot-chart
 RegionId: cn-hangzhou
-CustomParameters:
-- NoEcho: false
-  Type: Number
-  AllowedPattern: ''
-  Label: Pod数
-  ConstraintDescription: ''
-  Default: '1'
-  Name: ReplicaCount
-OutputType: SetAfterCreated
+OutputType: HelmNotes
 Owner: yehanyh
 Branch: main
 Platform: github
