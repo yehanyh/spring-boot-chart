@@ -1,5 +1,5 @@
 ChartValues:
-  replicaCount: 1
+  replicaCount: ${ReplicaCount}
   service:
     port: 8080
     type: LoadBalancer

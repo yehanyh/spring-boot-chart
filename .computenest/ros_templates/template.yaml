@@ -491,14 +491,7 @@ Resources:
           - ClusterId
       HelmChartUrl: '{{ computenest::helmchart::spring-boot-chart }}'
       ChartValues:
-        Fn::Sub:
-          - |
-            replicaCount: 1
-            service:
-              port: 8080
-              type: LoadBalancer
-          - Region:
-              Ref: ALIYUN::Region
+        Fn::Sub: '{"replicaCount": "${ReplicaCount}", "service": {"port": 8080, "type": "LoadBalancer"}}'
       Namespace:
         Ref: 'ALIYUN::StackName'
       ReleaseName: spring-boot-chart
