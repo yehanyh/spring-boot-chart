@@ -9,7 +9,17 @@ ServiceType: private
 ArtifactSourceType: HelmChart
 ServiceBuildRegion: ap-southeast-1
 RepoName: yehanyh/spring-boot-chart
+DockerComposeEnvPath: ''
 RegionId: cn-hangzhou
+CustomParameters:
+- NoEcho: false
+  Type: Number
+  AllowedPattern: ''
+  Label: Pod数
+  ConstraintDescription: ''
+  Default: '1'
+  Name: ReplicaCount
+DockerComposeYamlPath: ''
 OutputType: HelmNotes
 Owner: yehanyh
 Branch: main
