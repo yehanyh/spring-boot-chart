@@ -490,9 +490,18 @@ Resources:
           - AckOrAcsClusterModule
           - ClusterId
       HelmChartUrl: '{{ computenest::helmchart::spring-boot-chart }}'
+      ChartValues:
+        replicaCount:
+          Ref: ReplicaCount
+        service:
+          port: 8080
+          type: LoadBalancer
       Namespace:
         Ref: 'ALIYUN::StackName'
       ReleaseName: spring-boot-chart
+      OutputCmd: |
+        export SERVICE_IP=$(kubectl get svc --namespace ${Namespace} spring-boot-chart -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+        echo "Visit URL: http://$SERVICE_IP:8080/"
 Outputs:
   Instruction:
     Description:
