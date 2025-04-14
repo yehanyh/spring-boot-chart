@@ -5,15 +5,14 @@ ChartValues:
     port: 8080
     type: LoadBalancer
 HelmChartPath: Chart
+RuntimeType: Kubernetes
+ServiceType: private
 OutputCmd: |-
   export SERVICE_IP=$(kubectl get svc --namespace ${Namespace} spring-boot-chart -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
   echo "Visit URL: http://$SERVICE_IP/"
-RepoName: yehanyh/spring-boot-chart
-DockerComposeEnvPath: ''
-RuntimeType: Kubernetes
-ServiceType: private
 ArtifactSourceType: HelmChart
 ServiceBuildRegion: ap-southeast-1
+RepoName: yehanyh/spring-boot-chart
 RegionId: cn-hangzhou
 CustomParameters:
 - NoEcho: false
@@ -23,7 +22,6 @@ CustomParameters:
   ConstraintDescription: ''
   Default: '1'
   Name: ReplicaCount
-DockerComposeYamlPath: ''
 OutputType: OutputCommand
 Owner: yehanyh
 Branch: main
