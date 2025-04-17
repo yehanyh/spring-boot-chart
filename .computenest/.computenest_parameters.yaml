@@ -7,9 +7,6 @@ ChartValues:
 HelmChartPath: Chart
 RuntimeType: Kubernetes
 ServiceType: private
-OutputCmd: |-
-  export SERVICE_IP=$(kubectl get svc --namespace ${Namespace} spring-boot-chart -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-  echo "Visit URL: http://$SERVICE_IP:8080/"
 ArtifactSourceType: HelmChart
 ServiceBuildRegion: ap-southeast-1
 RepoName: yehanyh/spring-boot-chart
@@ -22,7 +19,7 @@ CustomParameters:
   ConstraintDescription: ''
   Default: '1'
   Name: ReplicaCount
-OutputType: OutputCommand
+OutputType: HelmNotes
 Owner: yehanyh
 Branch: main
 Platform: github
